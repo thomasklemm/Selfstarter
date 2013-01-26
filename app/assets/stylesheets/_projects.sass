@@ -1,0 +1,144 @@
+// Place all the styles related to the projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.project-details
+  margin-top: 2rem
+
+  .pledge-button, .final-pledge-button
+    @include primary-button
+    .primary
+      font-size: 1.5rem
+      font-weight: 600
+    .secondary
+      margin-top: 6px
+      font-size: 13px
+
+  .final-pledge-button
+    width: 50%
+    margin: 0 auto
+    margin-top: 1rem
+
+  .header
+    .title
+      font-size: 2.5rem
+      line-height: 2.5rem
+      font-weight: 600
+    .subtitle
+      margin-top: 12px
+      margin-bottom: 2rem
+      font-size: 1.1rem
+      border-left: 3px solid $primary
+      padding-left: 0.65rem
+
+  .project-description
+    padding: 1.5rem
+    padding-top: 1.25rem
+    background: white(0.9)
+    border-radius: 10px
+    @include pop-out
+    h1, h2, p, img
+      margin: 0.75rem 0
+    img
+      border-radius: 10px
+      max-width: 100%
+
+  .sidebar
+    .remind-me-button
+      @include secondary-button
+      width: 67%
+      margin: 0 auto
+      border: 1px solid white
+      @include pop-button
+
+    .stats
+      @include pop-out
+      padding: 1.25rem 1.5rem 1rem
+      background: rgba($primary, 0.15)
+      background: rgba(#f9f9f9, 0.5)
+      border-radius: 10px
+      .stat
+        margin-top: 0.75rem
+        color: #4e4e4e
+        font-weight: 600
+        font-size: 1.272rem
+        small, .secondary
+          font-weight: 400
+          font-size: 0.9375rem
+
+    .starters
+      margin-top: 1rem
+      padding: 1.25rem 1.5rem 1rem
+      background: white(0.9)
+      border-radius: 10px
+      @include pop-out
+      .company
+        padding-bottom: 0.75rem
+        border-bottom: 1px solid #ddd
+        margin-bottom: 0.75rem
+        @include row
+        img
+          @include span-columns(2 of 4)
+          border-radius: 8px
+        .details
+          @include span-columns(2 of 4)
+          .name
+            font-weight: bold
+            font-size: 1.25rem
+          .location
+      .starter
+        padding-bottom: 0.75rem
+        &:last-of-type
+          padding-bottom: 0
+        @include row
+        img
+          @include span-columns(1 of 4)
+        .details
+          @include span-columns(3 of 4)
+          line-height: 18px
+          .name
+            font-weight: bold
+          .expertise
+            font-size: 0.875rem
+          .location
+            font-size: 0.875rem
+            @extend .muted
+      .contact-founders-button
+        @include secondary-button
+        width: 70%
+        margin: 0 auto
+
+    .rewards
+      margin-top: 1rem
+      padding: 1.25rem 1.5rem 1rem
+      background: rgba($primary, 0.15)
+      background: rgba(#f9f9f9, 0.5)
+      border-radius: 10px
+      @include pop-out
+      .reward
+        padding-bottom: 1rem
+        border-bottom: 1px solid #ddd
+        margin-bottom: 1rem
+        &:last-of-type
+          padding: 0
+          margin: 0
+          border: 0
+        &:hover
+          cursor: pointer
+        .minimum-pledge
+          font-size: 1.25rem
+          font-weight: 600
+        .backers-count
+          @extend .muted
+        .description
+        .date
+          @extend .muted
+        .pledge-button
+          @include secondary-button
+          width: 67%
+          margin: 0 auto
+          margin-top: 0.5rem
+
+
+
+
+

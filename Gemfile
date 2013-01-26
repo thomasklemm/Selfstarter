@@ -21,14 +21,17 @@ gem 'high_voltage'
 # Slim (Templating)
 gem 'slim-rails'
 
+# Strong parameters (Mass assignment protection)
+gem 'strong_parameters'
+
 # Friendly Id (Human-Readable IDs for ActiveRecord Models)
-# gem 'friendly_id'
+gem 'friendly_id'
 
 # HTTPClient (MT-Safe HTTP Client)
 # gem 'httpclient'
 
 # Redcarpet (Markdown Parser)
-# gem 'redcarpet'
+gem 'redcarpet'
 
 # Devise (User Authentication)
 # gem 'devise'

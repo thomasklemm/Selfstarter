@@ -1,4 +1,7 @@
 Selfstarter::Application.routes.draw do
+  # Projects
+  resources :projects
+
   # User authentication
   # devise_for :users,
   #   path_names: {sign_in: 'login', sign_out: 'logout'},

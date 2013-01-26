@@ -1,0 +1,65 @@
+.team-details
+  margin-top: 1.2rem
+  // header
+  .team-header
+    @include span-columns(8)
+    @include row
+    .left-side
+      @include span-columns(2 of 8)
+    .right-side
+      @include span-columns(6 of 8)
+    img
+      width: 100%
+      border-radius: 10px
+    .contact-button
+      @include secondary-button
+      padding-left: 6px
+      padding-right: 6px
+    .name
+      font-size: 2rem
+      line-height: 1
+      font-weight: 600
+      margin-bottom: 0.4rem
+    .pitch
+      margin-bottom: 0.4rem
+    .location
+      @include muted
+
+  // description
+  .team-description
+    @include span-columns(8)
+    margin-top: 1rem
+    padding-bottom: 1.5rem
+    border-bottom: 1px solid #ccc
+    margin-bottom: 1.5rem
+
+  // founders
+  .founders
+    @include span-columns(8)
+    .founder
+      @include row
+      &:not(:last-child)
+        padding-bottom: 1.5rem
+        border-bottom: 1px solid #ccc
+        margin-bottom: 1.5rem
+      .left-side
+        @include span-columns(2 of 8)
+      .right-side
+        @include span-columns(6 of 8)
+      img
+        width: 100%
+        border-radius: 10px
+      .contact-button
+        @include secondary-button
+        padding-left: 6px
+        padding-right: 6px
+      .name
+        font-size: 1.5rem
+        line-height: 1 // upper text end is image end
+        font-weight: 600
+        margin-bottom: 0.3rem
+      .role // unused
+      .location
+        @include muted
+        margin-bottom: 6px
+      .description
