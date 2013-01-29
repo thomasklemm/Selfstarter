@@ -1,22 +1,19 @@
 # == Schema Information
 #
-# Table name: memberships
+# Table name: rewards
 #
 #  created_at :datetime         not null
 #  id         :integer          not null, primary key
-#  team_id    :integer
+#  project_id :integer
 #  updated_at :datetime         not null
-#  user_id    :integer
 #
 # Indexes
 #
-#  index_memberships_on_team_id  (team_id)
-#  index_memberships_on_user_id  (user_id)
+#  index_rewards_on_project_id  (project_id)
 #
 
-class Membership < ActiveRecord::Base
+class Reward < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
 
-  belongs_to :user
-  belongs_to :team
+  belongs_to :project
 end

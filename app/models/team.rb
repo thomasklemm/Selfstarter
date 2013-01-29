@@ -8,8 +8,12 @@
 #
 
 class Team < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
+
   has_many :memberships
   has_many :members,
     through: :memberships,
     source: :user
+
+  has_many :projects
 end
