@@ -2,9 +2,13 @@
 #
 # Table name: teams
 #
-#  created_at :datetime         not null
-#  id         :integer          not null, primary key
-#  updated_at :datetime         not null
+#  created_at  :datetime         not null
+#  description :text
+#  id          :integer          not null, primary key
+#  location    :text
+#  name        :text
+#  pitch       :text
+#  updated_at  :datetime         not null
 #
 
 class Team < ActiveRecord::Base
@@ -17,7 +21,7 @@ class Team < ActiveRecord::Base
 
   # Membership and founders
   has_many :memberships
-  has_many :founder,
+  has_many :founders,
     through: :memberships,
     source: :user
 

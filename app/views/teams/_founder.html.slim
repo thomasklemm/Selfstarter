@@ -1,0 +1,14 @@
+.founder
+  .left-side
+    = image_tag('slim/starter.jpg')
+    .contact-button <i class='icon-envelope-alt'></i> Talk
+  .right-side
+    .full-name = founder.full_name
+    .concerns
+      i.icon-magic
+      = founder.concerns
+    .location
+      i.icon-heart
+      = founder.location
+    .description
+      = founder.description

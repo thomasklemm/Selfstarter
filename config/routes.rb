@@ -1,9 +1,13 @@
 Selfstarter::Application.routes.draw do
+  get "teams/show"
+
   devise_for :users,
     path_names: {sign_in: 'login', sign_out: 'logout'}
 
   # Projects
-  resources :projects
+  resources :projects, only: [:index, :show] do
+    resource :team, only: :show
+  end
 
   # User authentication
   # devise_for :users,

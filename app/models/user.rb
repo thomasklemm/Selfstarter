@@ -10,6 +10,7 @@
 #  current_sign_in_ip     :string(255)
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
+#  full_name              :text
 #  id                     :integer          not null, primary key
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)

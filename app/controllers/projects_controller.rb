@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  # OPTIMIZE: We need some kind of checking current_team checking and authorization, take a look at a few resources there.
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_filter :set_project, only: [:show, :edit, :update, :destroy]
 
   def index

@@ -1,0 +1,19 @@
+.team-details
+  .company
+    .team-header
+      .left-side
+        = image_tag('slim/company.jpg')
+        .contact-button <i class='icon-envelope-alt'></i> Talk
+      .right-side
+        .name = @team.name
+        .pitch = @team.pitch
+        .location
+          i.icon-heart
+          = @team.location
+
+    .team-description
+      = @team.description
+
+  .founders
+    = render partial: 'teams/founder', collection: @team.founders
+

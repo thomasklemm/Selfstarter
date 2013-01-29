@@ -1,8 +1,3 @@
-h1 Projects#index
-p Find me in app/views/projects/index.html.slim
-
 h3 Projects
 - for project in @projects
   div = link_to project.title, project
-
-= link_to 'Start a new project', new_project_path
