@@ -16,4 +16,12 @@ class Reward < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
 
   belongs_to :project
+
+  has_many :kickbacks
+  has_many :backings,
+    through: :kickbacks
+
+  def backers
+    backings.flat_map(&:backers)
+  end
 end

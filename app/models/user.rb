@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
   has_many :teams,
     through: :memberships
 
+  has_many :backings
+  has_many :backed_projects,
+    through: :backings
+
   # FIX: NOT SURE IF THIS IS WORKING RIGHT NOW!
   attr_accessible :email, :password, :password_confirmation, :remember_me
 end
