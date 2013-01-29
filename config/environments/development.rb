@@ -1,10 +1,6 @@
 Selfstarter::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  # Default URL Host
-  # required by Swiftype
-  Rails.application.routes.default_url_options[:host] = 'selfstartr.dev'
-
   # Default actiomailer url host
   # required by devise
   config.action_mailer.default_url_options = { host: 'selfstartr.dev' }

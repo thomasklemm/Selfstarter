@@ -27,14 +27,17 @@ gem 'strong_parameters'
 # Friendly Id (Human-Readable IDs for ActiveRecord Models)
 gem 'friendly_id'
 
-# HTTPClient (MT-Safe HTTP Client)
-# gem 'httpclient'
-
 # Redcarpet (Markdown Parser)
 gem 'redcarpet'
 
+# Figaro (Managing credentials)
+gem 'figaro'
+
+# New Relic (Server Monitoring)
+gem 'newrelic_rpm'
+
 # Devise (User Authentication)
-# gem 'devise'
+gem 'devise'
 
 # Omniauth for Facebook and Twitter (oAuth Authentication)
 # gem 'omniauth-twitter'
@@ -47,27 +50,11 @@ gem 'redcarpet'
 # Cache Digests (Watch Progress of this gem!)
 # gem 'cache_digests'
 
-# Formtastic (Form Markup)
-# gem 'formtastic'
-
-# Audited (Model Versioning and Auditing)
-# gem 'audited-activerecord', '~> 3.0'
-
-# Swiftype (Search Engine and Autocompletion)
-# TODO: Remove, no full-text searching right now, and breaks with certain records anyway
-# gem 'swiftype'
-
-# Figaro (Managing credentials)
-gem 'figaro'
-
-# New Relic (Server Monitoring)
-gem 'newrelic_rpm'
-
-# Closure Tree (Nesting Structures)
-# gem 'closure_tree'
-
 # Dynamic Form (Display validation error messages)
 # gem 'dynamic_form'
+
+# HTTPClient (MT-Safe HTTP Client)
+# gem 'httpclient'
 
 # Production Gems
 group :production do
@@ -119,13 +106,13 @@ group :development do
   # Quiet Assets (Mute Asset Log Messages in Development)
   gem 'quiet_assets'
 
-  # Lol DBA (Find missing indexes)
-  gem 'lol_dba'
-
   # Bullet (Eager Loading Notification)
   gem 'bullet'
 
   # Better Errors (REPL Debug)
   gem 'better_errors'
   gem 'binding_of_caller'
+
+  # Lol DBA (Find missing indexes)
+  # gem 'lol_dba'
 end
