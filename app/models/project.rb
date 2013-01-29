@@ -26,6 +26,11 @@ class Project < ActiveRecord::Base
 
   has_many :rewards
 
+  has_many :backings
+  has_many :backers,
+    through: :backings,
+    source: :user
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 end
