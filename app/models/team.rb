@@ -8,5 +8,8 @@
 #
 
 class Team < ActiveRecord::Base
-  # attr_accessible :title, :body
+  has_many :memberships
+  has_many :members,
+    through: :memberships,
+    source: :user
 end
