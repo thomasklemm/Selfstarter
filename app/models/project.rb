@@ -4,8 +4,11 @@
 #
 #  created_at  :datetime         not null
 #  description :text
+#  ends_at     :datetime
 #  id          :integer          not null, primary key
 #  slug        :text
+#  starts_at   :datetime
+#  subtitle    :text
 #  team_id     :integer
 #  title       :text
 #  updated_at  :datetime         not null
