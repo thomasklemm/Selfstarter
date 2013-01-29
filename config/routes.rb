@@ -1,4 +1,7 @@
 Selfstarter::Application.routes.draw do
+  devise_for :users,
+    path_names: {sign_in: 'login', sign_out: 'logout'}
+
   # Projects
   resources :projects
 
@@ -11,10 +14,6 @@ Selfstarter::Application.routes.draw do
   #   get 'login',  to: 'devise/sessions#new',     as: :new_user_session
   #   get 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
   # end
-
-  # Sidekiq Web Interface
-  # require 'sidekiq/web'
-  # mount Sidekiq::Web, at: 'admin/sidekiq', as: :sidekiq
 
   # Static Pages
   get '*id' => 'pages#show', as: :page
