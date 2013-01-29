@@ -15,5 +15,5 @@ class Team < ActiveRecord::Base
     through: :memberships,
     source: :user
 
-  has_many :projects
+  has_one :project
 end

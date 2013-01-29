@@ -27,7 +27,7 @@
 #
 
 class User < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
+  # include ActiveModel::ForbiddenAttributesProtection
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :lockable, :timeoutable and :omniauthable
@@ -39,5 +39,6 @@ class User < ActiveRecord::Base
   has_many :teams,
     through: :memberships
 
-  # attr_accessible :email, :password, :password_confirmation, :remember_me
+  # FIX: NOT SURE IF THIS IS WORKING RIGHT NOW!
+  attr_accessible :email, :password, :password_confirmation, :remember_me
 end
