@@ -16,6 +16,9 @@
 
 class Membership < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
+  #
+  # Membership joins a user with a team.
+  #
 
   belongs_to :user
   belongs_to :team

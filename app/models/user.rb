@@ -27,22 +27,44 @@
 #
 
 class User < ActiveRecord::Base
+  # FIXME: HOW TO PROTECT THE DEVISE USER MODEL IN THE WORLD OF STRONG_PARAMETERS?
   # include ActiveModel::ForbiddenAttributesProtection
+  #
+  # SIGNING UP
+  # A user can register and needs to confirm his email by clicking
+  # an link in a confirmation email prior to performing any actions
+  # at our site.
+  #
+  # TEAMS AND STARTED PROJECTS
+  # A user can create or join a team, he then becomes one of its founder.
+  # The team can create a project, which show in the user's started projects.
+  #
+  # BACKINGS AND BACKED PROJECTS
+  # Users can make backings (i.e. pledges) to any projects (as long as he isn't
+  # one of its founders).
+  # Backed projects display a user's financial support of creative ventures.
+  #
 
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :lockable, :timeoutable and :omniauthable
+  # Authentication using Devise
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
+  # Memberships and teams
   has_many :memberships
   has_many :teams,
     through: :memberships
 
+  # The projects that any of the associated teams start
+  def started_projects
+    teams.flat_map(&:project)
+  end
+
+  # Backings and backed projects
   has_many :backings
   has_many :backed_projects,
     through: :backings
 
-  # FIX: NOT SURE IF THIS IS WORKING RIGHT NOW!
+  # FIXME: ATTR_ACCESSIBLE IS DEACTIVATED I GUESS SOME WAY WHEN I STARTED USING STRONG PARAMETERS!
   attr_accessible :email, :password, :password_confirmation, :remember_me
 end

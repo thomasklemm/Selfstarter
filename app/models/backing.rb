@@ -15,9 +15,17 @@
 #
 
 class Backing < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
+  #
+  # A backing is a pledge by a backer to back a project
+  #
   belongs_to :project
   belongs_to :backer,
     class_name: 'User'
 
+  # For his backing the user can select zero or one reward,
+  # using kickback as the join model
   has_one :kickback
+  has_one :reward,
+    through: :kickback
 end

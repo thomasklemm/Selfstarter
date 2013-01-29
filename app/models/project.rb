@@ -21,16 +21,33 @@
 
 class Project < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
+  #
+  # A project is the central point of interest
+  # and the main entrance point to our site.
+  # A project is created by a team, which is made up
+  # of the team's founders.
+  # Backers can back projects by making a backing,
+  # their pledge.
+  # A project has many rewards, zero or one of which
+  # can be selected by backers as a kickback
+  # for their backing.
 
+  # Creating team and its founders
   belongs_to :team
+  def founders
+    team.founders
+  end
 
+  # Rewards
   has_many :rewards
 
+  # Backings and backers
   has_many :backings
   has_many :backers,
     through: :backings,
     source: :user
 
+  # Friendly url
   extend FriendlyId
   friendly_id :title, use: :slugged
 end
