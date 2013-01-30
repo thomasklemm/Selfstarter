@@ -23,7 +23,6 @@
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string(255)
 #  sign_in_count          :integer          default(0)
-#  team_id                :integer
 #  unconfirmed_email      :string(255)
 #  updated_at             :datetime         not null
 #
@@ -57,13 +56,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
-  # Membership in team
-  belongs_to :team,
-    autosave: true
+  # Memberships in teams
+  has_many :memberships
+  has_many :teams,
+    through: :memberships
 
-  # The project of the associated team
-  def started_project
-    team.project
+  # Projects of all teams one is a member of
+  def started_projects
+    teams.flat_map(&:projects)
   end
 
   # Backings and backed projects

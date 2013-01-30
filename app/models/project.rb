@@ -32,9 +32,11 @@ class Project < ActiveRecord::Base
   # can be selected by backers as a kickback
   # for their backing.
 
-  # Creating team and its founders
+  # Team and founders
   belongs_to :team,
     autosave: true
+  validates :team_id, presence: true
+
   def founders
     team.founders
   end
@@ -50,7 +52,8 @@ class Project < ActiveRecord::Base
     through: :backings,
     source: :user
 
-  # Friendly url
-  extend FriendlyId
-  friendly_id :title, use: :slugged
+  # Slug for friendly url
+  validates :slug,
+    presence: true,
+    uniqueness: true
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130100853) do
+ActiveRecord::Schema.define(:version => 20130130200002) do
 
   create_table "backings", :force => true do |t|
     t.integer  "project_id"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(:version => 20130130100853) do
 
   add_index "kickbacks", ["backing_id"], :name => "index_kickbacks_on_backing_id"
   add_index "kickbacks", ["reward_id"], :name => "index_kickbacks_on_reward_id"
+
+  create_table "memberships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "memberships", ["team_id"], :name => "index_memberships_on_team_id"
+  add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "projects", :force => true do |t|
     t.text     "title"
@@ -63,7 +73,10 @@ ActiveRecord::Schema.define(:version => 20130130100853) do
     t.text     "location"
     t.text     "pitch"
     t.text     "description"
+    t.text     "slug"
   end
+
+  add_index "teams", ["slug"], :name => "index_teams_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -83,7 +96,6 @@ ActiveRecord::Schema.define(:version => 20130130100853) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.text     "full_name"
-    t.integer  "team_id"
     t.text     "first_name"
     t.text     "last_name"
     t.text     "location"

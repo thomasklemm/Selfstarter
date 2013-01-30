@@ -8,22 +8,33 @@
 #  location    :text
 #  name        :text
 #  pitch       :text
+#  slug        :text
 #  updated_at  :datetime         not null
+#
+# Indexes
+#
+#  index_teams_on_slug  (slug) UNIQUE
 #
 
 class Team < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
   #
-  # The team is the central model to start a project.
-  # Each team can have one project at the moment.
-  # Founders make up a team.
+  # Founders make up a team. The team is the central model
+  # to start projects. Each team can have multiple projects.
   #
 
-  # Founders
+  # Memberships and founders
+  has_many :memberships
   has_many :founders,
-    class_name: 'User'
+    through: :memberships,
+    source:  :user
 
-  # A team can have zero or one project
-  has_one :project,
+  # Projects
+  has_many :projects,
     dependent: :restrict
+
+  # Slug
+  validates :slug,
+    presence: true,
+    uniqueness: true
 end

@@ -1,47 +1,48 @@
 class TeamsController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_filter :set_teams
+  before_filter :set_team, only: [:show, :edit, :update, :destroy]
 
-  #  GET /team
+  # GET /teams
+  def index
+  end
+
+  # GET /teams/123
   def show
-    @team = current_user.team
   end
 
-  # GET /team/new
+  # GET /teams/new
   def new
-    @team = current_user.build_team
+    @team = @teams.build(team_params)
   end
 
-  # POST /team
+  # POST /teams
   def create
-    @team = current_user.create_team(team_params)
+    @team = @teams.build(team_params)
     if @team.save
-      redirect_to team_path, notice: 'Team created.'
+      redirect_to @team, notice: 'Team created.'
     else
       render action: :new
     end
   end
 
-  # GET /team/edit
+  # GET /teams/123/edit
   def edit
-    @team = current_user.team
-    if @team.blank?
-      return redirect_to new_team_path, notice: 'Please create or join a team first.'
-    end
   end
 
-  # PUT /team
+  # PUT /teams/123
   def update
-    @team = current_user.team
     if @team.update_attributes!(team_params)
-      redirect_to team_path, notice: 'Team updated.'
+      redirect_to @team, notice: 'Team updated.'
     else
       render action: :edit
     end
   end
 
-  # DELETE /team
+  # DELETE /teams/123
   def destroy
-    # OPTIMIZE: NOTHING HERE YET
+    @team.destroy
+    redirect_to teams_path, notice: 'Team destroyed.'
   end
 
   # OPTIMIZE: ALLOW TEAM CREATOR TO INVITE TEAM MEMBERS
@@ -56,5 +57,13 @@ private
 
   def team_params
     params.require(:team).permit(:name, :pitch, :location, :description)
+  end
+
+  def set_teams
+    @teams = current_user.teams
+  end
+
+  def set_team
+    @team = @teams.find(params[:id])
   end
 end
