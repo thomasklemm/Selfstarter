@@ -23,4 +23,5 @@ class Kickback < ActiveRecord::Base
   #
   belongs_to :backing
   belongs_to :reward
+  validates :backing_id, :reward_id, presence: true
 end

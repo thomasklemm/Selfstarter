@@ -20,10 +20,12 @@ class Reward < ActiveRecord::Base
   # A backing back have zero or one reward selected.
   # The backer's choice is stored in the kickback model.
   #
-  belongs_to :project
+  belongs_to :project,
+    autosave: true
 
   # Choices of rewards are recorded in the kickback model
-  has_many :kickbacks
+  has_many :kickbacks,
+    dependent: :restrict
   has_many :backings,
     through: :kickbacks
 

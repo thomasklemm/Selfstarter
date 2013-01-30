@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130129210120) do
+ActiveRecord::Schema.define(:version => 20130130081629) do
 
   create_table "backings", :force => true do |t|
     t.integer  "project_id"
@@ -32,19 +32,6 @@ ActiveRecord::Schema.define(:version => 20130129210120) do
 
   add_index "kickbacks", ["backing_id"], :name => "index_kickbacks_on_backing_id"
   add_index "kickbacks", ["reward_id"], :name => "index_kickbacks_on_reward_id"
-
-  create_table "memberships", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "team_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.text     "concerns"
-    t.text     "location"
-    t.text     "description"
-  end
-
-  add_index "memberships", ["team_id"], :name => "index_memberships_on_team_id"
-  add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "projects", :force => true do |t|
     t.text     "title"
@@ -96,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20130129210120) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.text     "full_name"
+    t.integer  "team_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

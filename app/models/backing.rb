@@ -22,10 +22,12 @@ class Backing < ActiveRecord::Base
   belongs_to :project
   belongs_to :backer,
     class_name: 'User'
+  validates :project_id, :user_id, presence: true
 
   # For his backing the user can select zero or one reward,
   # using kickback as the join model
-  has_one :kickback
+  has_one :kickback,
+    dependent: :restrict
   has_one :reward,
     through: :kickback
 end

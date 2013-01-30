@@ -19,12 +19,10 @@ class Team < ActiveRecord::Base
   # Founders make up a team.
   #
 
-  # Membership and founders
-  has_many :memberships
+  # Founders
   has_many :founders,
-    through: :memberships,
-    source: :user
+    class_name: 'User'
 
-  # Projects the team creates
+  # A team can have zero or one project
   has_one :project
 end

@@ -33,16 +33,19 @@ class Project < ActiveRecord::Base
   # for their backing.
 
   # Creating team and its founders
-  belongs_to :team
+  belongs_to :team,
+    autosave: true
   def founders
     team.founders
   end
 
   # Rewards
-  has_many :rewards
+  has_many :rewards,
+    dependent: :destroy
 
   # Backings and backers
-  has_many :backings
+  has_many :backings,
+    dependent: :restrict # do not destroy project if there are backings associated
   has_many :backers,
     through: :backings,
     source: :user
