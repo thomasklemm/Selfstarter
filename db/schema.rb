@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130081629) do
+ActiveRecord::Schema.define(:version => 20130130100853) do
 
   create_table "backings", :force => true do |t|
     t.integer  "project_id"
@@ -84,6 +84,11 @@ ActiveRecord::Schema.define(:version => 20130130081629) do
     t.datetime "updated_at",                             :null => false
     t.text     "full_name"
     t.integer  "team_id"
+    t.text     "first_name"
+    t.text     "last_name"
+    t.text     "location"
+    t.text     "concerns"
+    t.text     "description"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

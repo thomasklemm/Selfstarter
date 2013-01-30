@@ -40,7 +40,7 @@ $visual-grid-opacity: 0.4     // Visual grid opacity.
 
 // general
 body
-  padding: 0 16px // make body stay way from bowser edges
+  padding: 0 12px // make body stay way from bowser edges
   font-family: $body-fonts
   font-size: 100%
   line-height: 1.67
@@ -163,6 +163,10 @@ $footer-borders: 1px dashed #bbb
 // links
 a
   text-decoration: none
+  &:link, &:visited, &:active
+    color: $primary
+  &:hover
+    color: #2200CC
 
 // Muted text
 .muted
@@ -179,3 +183,25 @@ a
   @include primary-button
 .secondary-button
   @include secondary-button
+
+// flash messages
+.flash-message
+  @include span-columns(12)
+  background: rgba($primary, 0.25)
+  line-height: 36px // height
+  padding: 0 0.8rem // left and right padding
+  cursor: pointer
+  // special background colors for notice and alert flashes possible
+  &.notice
+  &.alert
+  .close
+    float: right
+    font-size: 1.5rem
+    line-height: 36px
+    width: 36px
+    text-align: center
+    background: rgba($primary, 0.58)
+    color: #e9e9e9
+    cursor: pointer
+    &:hover
+      color: #f9f9f9

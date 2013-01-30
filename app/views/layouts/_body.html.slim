@@ -1,6 +1,8 @@
 #root
+  / topbar
+  = render 'application/topbar'
   / any flash messages
-  = render 'flash_messages'
+  = render 'application/flash_messages'
 
   / main content
   #content.container
@@ -10,7 +12,7 @@
   #root_footer
 
 #footer
-  = render 'footer'
+  = render 'application/footer'
 
 / async javascript snippets at the end of the body
 / to improve overall load times

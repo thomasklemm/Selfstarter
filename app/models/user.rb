@@ -2,18 +2,23 @@
 #
 # Table name: users
 #
+#  concerns               :text
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :string(255)
 #  confirmed_at           :datetime
 #  created_at             :datetime         not null
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :string(255)
+#  description            :text
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
+#  first_name             :text
 #  full_name              :text
 #  id                     :integer          not null, primary key
+#  last_name              :text
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
+#  location               :text
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string(255)
@@ -67,6 +72,16 @@ class User < ActiveRecord::Base
   has_many :backed_projects,
     through: :backings
 
-  # FIXME: ATTR_ACCESSIBLE IS DEACTIVATED I GUESS SOME WAY WHEN I STARTED USING STRONG PARAMETERS!
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  # Validations
+  # Devise validates presence of email and password on its own
+  validates :first_name, :last_name, presence: true
+
+  # Virtual attributes
+  def full_name
+    "#{ first_name } #{ last_name }"
+  end
+
+  # REVIEW: THIS IS CURRENTLY WORKING, YEAH!
+  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me,
+                  :location, :concerns, :description
 end

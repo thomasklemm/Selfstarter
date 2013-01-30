@@ -9,10 +9,10 @@ $ ->
   # Flash messages
   # Close on click
   $('.flash-message .close').click ->
-    $(this).parent().fadeOut()
+    $(this).parent().slideUp()
 
   $('.flash-message').click ->
-    $(this).fadeOut()
+    $(this).slideUp()
 
   ##
   # Autosize

@@ -1,0 +1,25 @@
+<h2>Anmelden</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :first_name, 'Vorname' %><br />
+  <%= f.text_field :first_name, :autofocus => true %></div>
+
+  <div><%= f.label :last_name, 'Nachname' %><br />
+  <%= f.text_field :last_name%></div>
+
+  <div><%= f.label :email, 'Deine Email' %><br />
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :password, 'Passwort' %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation, 'Passwort bestätigen' %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div class="space-one"></div>
+  <div><%= f.submit "Anmelden", class: 'primary-button' %></div>
+<% end %>
+
+<%= render "users/shared/links" %>

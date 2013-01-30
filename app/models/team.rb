@@ -24,5 +24,6 @@ class Team < ActiveRecord::Base
     class_name: 'User'
 
   # A team can have zero or one project
-  has_one :project
+  has_one :project,
+    dependent: :restrict
 end
