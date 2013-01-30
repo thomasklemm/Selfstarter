@@ -1,26 +1,21 @@
 class ProjectsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_filter :set_current_team, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :set_team
 
   def index
-    @projects = Project.scoped
+    @projects = @team.projects
   end
 
   def show
-    @project = Project.find(params[:id])
-  end
-
-  def team
-    @project = Project.find(params[:id])
-    @team = @project.team
+    @project = @team.projects.find(params[:id])
   end
 
   def new
-    @project = current_team.project || current_team.build_project
+    @project = @team.projects.build(project_params)
   end
 
   def create
-    @project = current_team.build_project(project_params)
+    @project = @team.projects.build(project_params)
     if @project.save
       redirect_to @project, notice: 'Project created.'
     else
@@ -29,7 +24,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = current_team.project
+    @project = @team.projects.find(params[:id])
   end
 
   def update
@@ -56,9 +51,10 @@ private
     params.require(:project).permit(:title, :description)
   end
 
+  def set_team
+    @team = Team.find(params[:team_id])
+  end
+
   def set_current_team
-    unless current_team
-      redirect_to new_team_path, notice: 'Please create or join a team first!'
-    end
   end
 end

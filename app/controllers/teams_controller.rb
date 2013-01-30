@@ -1,13 +1,13 @@
 class TeamsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :set_teams
-  before_filter :set_team, only: [:show, :edit, :update, :destroy]
+  before_filter :set_team, only: [:show, ]
 
   # GET /teams
   def index
+    @teams = Team.scoped
   end
 
-  # GET /teams/123
+  # GET /teams/my_team_slug
   def show
   end
 
@@ -26,11 +26,11 @@ class TeamsController < ApplicationController
     end
   end
 
-  # GET /teams/123/edit
+  # GET /teams/my_team_slug/edit
   def edit
   end
 
-  # PUT /teams/123
+  # PUT /teams/my_team_slug
   def update
     if @team.update_attributes!(team_params)
       redirect_to @team, notice: 'Team updated.'
@@ -39,7 +39,7 @@ class TeamsController < ApplicationController
     end
   end
 
-  # DELETE /teams/123
+  # DELETE /teams/my_team_slug
   def destroy
     @team.destroy
     redirect_to teams_path, notice: 'Team destroyed.'
@@ -59,11 +59,7 @@ private
     params.require(:team).permit(:name, :pitch, :location, :description)
   end
 
-  def set_teams
-    @teams = current_user.teams
-  end
-
   def set_team
-    @team = @teams.find(params[:id])
+    @team = Team.find(params[:id])
   end
 end

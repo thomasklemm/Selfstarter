@@ -32,9 +32,4 @@ class Team < ActiveRecord::Base
   # Projects
   has_many :projects,
     dependent: :restrict
-
-  # Slug
-  validates :slug,
-    presence: true,
-    uniqueness: true
 end

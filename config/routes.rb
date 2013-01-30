@@ -1,4 +1,5 @@
 Selfstarter::Application.routes.draw do
+  # User authentication
   devise_for :users,
     path_names: {sign_in: 'login', sign_out: 'logout'}
 
@@ -7,24 +8,13 @@ Selfstarter::Application.routes.draw do
     get 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
-  # Teams
-  resources :teams, except: :show do
-    get 'manage', on: :collection, as: :manage_teams_path
-  end
-
-  # Projects
-  resources :projects, except: :show do
-    get 'manage', on: :collection, as: :manage_projects_path
+  # Teams and projects
+  resources :teams
+    resources :projects
   end
 
   # Static pages
   get 'pages/*id' => 'pages#show', as: :page
-
-  # GET /apple => teams#show
-  # GET /apple/ipad => projects#show
-  resources :teams, only: :show, path: '' do
-    resources :projects, only: :show, path: ''
-  end
 
   # User authentication
   # devise_for :users,

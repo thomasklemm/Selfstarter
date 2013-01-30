@@ -51,9 +51,4 @@ class Project < ActiveRecord::Base
   has_many :backers,
     through: :backings,
     source: :user
-
-  # Slug for friendly url
-  validates :slug,
-    presence: true,
-    uniqueness: true
 end
