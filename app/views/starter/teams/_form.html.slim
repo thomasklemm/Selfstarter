@@ -1,0 +1,19 @@
+/ maker/teams/_form
+= form_for @team, url: starter_teams_path do |f|
+  = f.error_messages
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :location
+    = f.text_field :location
+  .field
+    = f.label :pitch
+    = f.text_area :pitch
+  .field
+    = f.label :description
+    = f.text_area :description
+
+  .actions
+    = f.submit 'Save'

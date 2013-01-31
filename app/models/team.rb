@@ -8,12 +8,7 @@
 #  location    :text
 #  name        :text
 #  pitch       :text
-#  slug        :text
 #  updated_at  :datetime         not null
-#
-# Indexes
-#
-#  index_teams_on_slug  (slug) UNIQUE
 #
 
 class Team < ActiveRecord::Base
@@ -27,9 +22,14 @@ class Team < ActiveRecord::Base
   has_many :memberships
   has_many :founders,
     through: :memberships,
-    source:  :user
+    source: :user
 
-  # Projects
-  has_many :projects,
+  # Project teams and projects
+  has_many :project_teams,
     dependent: :restrict
+  has_many :projects,
+    through: :project_teams
+
+  # Validations
+  validates :name, presence: true
 end

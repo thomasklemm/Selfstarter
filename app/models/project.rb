@@ -6,17 +6,10 @@
 #  description :text
 #  ends_at     :datetime
 #  id          :integer          not null, primary key
-#  slug        :text
 #  starts_at   :datetime
 #  subtitle    :text
-#  team_id     :integer
 #  title       :text
 #  updated_at  :datetime         not null
-#
-# Indexes
-#
-#  index_projects_on_slug     (slug) UNIQUE
-#  index_projects_on_team_id  (team_id)
 #
 
 class Project < ActiveRecord::Base
@@ -32,14 +25,10 @@ class Project < ActiveRecord::Base
   # can be selected by backers as a kickback
   # for their backing.
 
-  # Team and founders
-  belongs_to :team,
-    autosave: true
-  validates :team_id, presence: true
-
-  def founders
-    team.founders
-  end
+  # ProjectTeam and team
+  has_one :project_team
+  has_one :team,
+    through: :project_team
 
   # Rewards
   has_many :rewards,
@@ -51,4 +40,7 @@ class Project < ActiveRecord::Base
   has_many :backers,
     through: :backings,
     source: :user
+
+  # Validations
+  validates :title, presence: true
 end

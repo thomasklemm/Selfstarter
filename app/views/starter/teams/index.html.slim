@@ -1,0 +1,11 @@
+/ maker/teams/index
+h2 Your teams
+
+- for team in @teams
+  .team
+    = link_to team.name, starter_team_path(team)
+- if @teams.blank?
+  p None yet.
+
+/ Create a new team
+= link_to 'Create a new team', new_starter_team_path

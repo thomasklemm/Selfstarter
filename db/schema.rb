@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130200002) do
+ActiveRecord::Schema.define(:version => 20130130211237) do
 
   create_table "backings", :force => true do |t|
     t.integer  "project_id"
@@ -43,20 +43,25 @@ ActiveRecord::Schema.define(:version => 20130130200002) do
   add_index "memberships", ["team_id"], :name => "index_memberships_on_team_id"
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
+  create_table "project_teams", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "team_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "project_teams", ["project_id"], :name => "index_project_teams_on_project_id"
+  add_index "project_teams", ["team_id"], :name => "index_project_teams_on_team_id"
+
   create_table "projects", :force => true do |t|
     t.text     "title"
     t.text     "description"
-    t.text     "slug"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "team_id"
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.text     "subtitle"
   end
-
-  add_index "projects", ["slug"], :name => "index_projects_on_slug", :unique => true
-  add_index "projects", ["team_id"], :name => "index_projects_on_team_id"
 
   create_table "rewards", :force => true do |t|
     t.integer  "project_id"
@@ -73,10 +78,7 @@ ActiveRecord::Schema.define(:version => 20130130200002) do
     t.text     "location"
     t.text     "pitch"
     t.text     "description"
-    t.text     "slug"
   end
-
-  add_index "teams", ["slug"], :name => "index_teams_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

@@ -29,5 +29,6 @@ class Backing < ActiveRecord::Base
   has_one :kickback,
     dependent: :restrict
   has_one :reward,
-    through: :kickback
+    through: :kickback,
+    dependent: :restrict
 end

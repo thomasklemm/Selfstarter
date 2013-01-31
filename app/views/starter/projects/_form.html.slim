@@ -1,0 +1,22 @@
+/ maker/teams/_form
+= form_for @project, url: starter_team_projects_path do |f|
+  = f.error_messages
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :subtitle
+    = f.text_area :subtitle
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :starts_at
+    = f.date_select :starts_at
+  .field
+    = f.label :ends_at
+    = f.date_select :ends_at
+
+  .actions
+    = f.submit 'Save'

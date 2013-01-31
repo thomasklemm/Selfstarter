@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  # include Pundit
   protect_from_forgery
 
 private
@@ -8,15 +9,4 @@ private
   end
   helper_method :current_user?
 
-  def current_team
-    if current_user && current_user.team
-      current_user.team
-    end
-  end
-  helper_method :current_team
-
-  def current_team?
-    current_team.present?
-  end
-  helper_method :current_team?
 end

@@ -39,6 +39,12 @@ gem 'newrelic_rpm'
 # Devise (User Authentication)
 gem 'devise'
 
+# Pundit (Authorization)
+gem 'pundit'
+
+# Dynamic Form (Form validation)
+gem 'dynamic_form'
+
 # Omniauth for Facebook and Twitter (oAuth Authentication)
 # gem 'omniauth-twitter'
 # gem 'omniauth-facebook'
@@ -49,9 +55,6 @@ gem 'devise'
 
 # Cache Digests (Watch Progress of this gem!)
 # gem 'cache_digests'
-
-# Dynamic Form (Display validation error messages)
-# gem 'dynamic_form'
 
 # HTTPClient (MT-Safe HTTP Client)
 # gem 'httpclient'

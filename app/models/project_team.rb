@@ -1,24 +1,25 @@
 # == Schema Information
 #
-# Table name: memberships
+# Table name: project_teams
 #
 #  created_at :datetime         not null
 #  id         :integer          not null, primary key
+#  project_id :integer
 #  team_id    :integer
 #  updated_at :datetime         not null
-#  user_id    :integer
 #
 # Indexes
 #
-#  index_memberships_on_team_id  (team_id)
-#  index_memberships_on_user_id  (user_id)
+#  index_project_teams_on_project_id  (project_id)
+#  index_project_teams_on_team_id     (team_id)
 #
 
-class Membership < ActiveRecord::Base
+class ProjectTeam < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
   #
-  # Membership associates founders with teams.
+  # ProjectTeam joins projects and teams.
   #
-  belongs_to :user
+
+  belongs_to :project
   belongs_to :team
 end

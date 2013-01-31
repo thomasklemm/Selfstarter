@@ -1,0 +1,17 @@
+/ maker/teams/show
+
+h2 Show team
+
+p Name: #{ @team.name }
+p Location: #{ @team.location }
+p Pitch: #{ @team.pitch }
+p Description: #{ @team.description }
+
+h3 Team Projects
+- for project in @team.projects
+  .project
+    = link_to project.title, starter_team_project_path(@team, project)
+- if @team.projects.empty?
+  p None yet.
+
+= link_to 'Create a new project', new_starter_team_project_path(@team)

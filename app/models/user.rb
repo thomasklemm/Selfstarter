@@ -82,6 +82,5 @@ class User < ActiveRecord::Base
   end
 
   # REVIEW: THIS IS CURRENTLY WORKING, YEAH!
-  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me,
-                  :location, :concerns, :description
+  # attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, :location, :concerns, :description
 end
